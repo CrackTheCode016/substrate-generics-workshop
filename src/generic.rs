@@ -15,6 +15,7 @@ pub trait RuntimeConfig {
 This is our "generic" runtime.  We can use associated types to define our common types *once*.
 Now, we can use this concept of a common runtime to call our pallets with the types in place!
 */
+
 pub struct GenericRuntime;
 
 impl RuntimeConfig for GenericRuntime {
@@ -26,6 +27,7 @@ impl RuntimeConfig for GenericRuntime {
 /**
 Let's define and configure a second runtime, this one can be "evm" based:
 */
+
 pub struct EvmRuntime;
 
 impl RuntimeConfig for EvmRuntime {

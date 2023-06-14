@@ -15,8 +15,9 @@ mod tests {
     fn generic_zero_bal() {
         let bob = 0;
 
-        let balances = generic::BalancePallet::<generic::GenericRuntime>::new();
-        let bobs_balance = balances.balance(bob);
+        let balances_pallet = generic::BalancePallet::<generic::GenericRuntime>::new();
+
+        let bobs_balance = balances_pallet.balance(bob);
 
         assert_eq!(bobs_balance, 0)
     }
@@ -51,16 +52,17 @@ mod tests {
         assert_eq!(bobs_balance, 100)
     }
 
-    // #[test]
-    // fn generic_evm_balance() {
-    //     let bob = 0;
-    //     // Why wont this work?
-    //     let bob_evm: [u8; 64] = [0; 64];
+    #[test]
+    fn generic_evm_balance() {
+        let bob = 0;
+        // Why won't this work? Hint: look at bob vs. bob_evm and compare the configs!
+        let bob_evm: [u8; 64] = [0; 64];
 
-    //     let mut balances = generic::BalancePallet::<generic::EvmRuntime>::new();
-    //     balances.set_balance(100, bob);
-    //     let bobs_balance = balances.balance(bob);
+        let mut balances = generic::BalancePallet::<generic::EvmRuntime>::new();
 
-    //     assert_eq!(bobs_balance, 100)
-    // }
+        balances.set_balance(100, bob);
+        let bobs_balance = balances.balance(bob);
+
+        assert_eq!(bobs_balance, 100)
+    }
 }

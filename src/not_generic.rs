@@ -17,6 +17,7 @@ Surely this cannot be maintainable!
 */
 
 pub struct BalancePallet {
+    // Account <-> Balance
     balances: HashMap<u32, u32>,
 }
 
